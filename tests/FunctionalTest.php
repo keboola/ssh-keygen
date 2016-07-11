@@ -37,11 +37,7 @@ class FunctionalTest extends \PHPUnit_Framework_TestCase
         // first generation
         $lastOutput = exec('php ./src/run.php --data=./tests/data/generateAction', $output, $returnCode);
 
-        var_dump($output);
-        var_dump($lastOutput);
-
         $this->assertEquals(0, $returnCode);
-
 
         $data = json_decode($lastOutput, true);
 
@@ -62,9 +58,6 @@ class FunctionalTest extends \PHPUnit_Framework_TestCase
 
         // second generation
         $lastOutput = exec('php ./src/run.php --data=./tests/data/generateAction', $output, $returnCode);
-
-        var_dump($output);
-        var_dump($lastOutput);
 
         $this->assertEquals(0, $returnCode);
 
