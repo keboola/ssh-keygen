@@ -10,7 +10,7 @@ use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\NullHandler;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Yaml\Yaml;
-use Keboola\SSHKeygen\Exception\UserException;
+use Keboola\SSH\Keygen\Exception\UserException;
 
 define('APP_NAME', 'ssh-keygen');
 
@@ -27,10 +27,10 @@ $action = 'run';
 try {
 	$arguments = getopt("d::", ["data::"]);
 	if (!isset($arguments["data"])) {
-		throw new UserException('Data folder not set.');
+		throw new UserException(UserException::ERR_DATA_PARAM);
 	}
 	if (!file_exists($arguments["data"] . "/config.yml")) {
-		throw new UserException('Missing configuration file.');
+		throw new UserException(UserException::ERR_MISSING_CONFIG);
 	}
 
 	$config = Yaml::parse(file_get_contents($arguments["data"] . "/config.yml"));
