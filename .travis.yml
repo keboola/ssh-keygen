@@ -14,4 +14,4 @@ before_install:
 
 install: composer install -n
 
-script: php vendor/bin/phpunit
+script: php vendor/bin/phpunit --debug
