@@ -42,7 +42,12 @@ try {
 	}
 
 	if ($action === 'generate') {
-		$privateKeyFile = ROOT_PATH . '/data/out/ssh.key';
+		$keyPath = $arguments["data"] . '/out';
+		if (!is_dir($keyPath)) {
+			mkdir($keyPath, 0700, true);
+		}
+
+		$privateKeyFile = $keyPath . '/ssh.key';
 		$publicKeyFile = $privateKeyFile . '.pub';
 
 		$process = new Process("ssh-keygen -b 2048 -t rsa -f " . $privateKeyFile . " -N '' -q");

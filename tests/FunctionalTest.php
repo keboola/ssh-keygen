@@ -35,7 +35,7 @@ class FunctionalTest extends \PHPUnit_Framework_TestCase
     public function testGenerateAction()
     {
         // first generation
-        $lastOutput = exec('php ./src/run.php --data=./tests/data/generateAction 2>&1', $output, $returnCode);
+        $lastOutput = exec('php ./src/run.php --data=./tests/data/generateAction', $output, $returnCode);
 
         $this->assertEquals(0, $returnCode);
 
@@ -57,7 +57,7 @@ class FunctionalTest extends \PHPUnit_Framework_TestCase
         unset($returnCode);
 
         // second generation
-        $lastOutput = exec('php ./src/run.php --data=./tests/data/generateAction 2>&1', $output, $returnCode);
+        $lastOutput = exec('php ./src/run.php --data=./tests/data/generateAction', $output, $returnCode);
 
         $this->assertEquals(0, $returnCode);
 
