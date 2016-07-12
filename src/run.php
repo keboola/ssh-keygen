@@ -61,6 +61,7 @@ try {
 		unlink($publicKeyFile);
 
 		echo json_encode([
+			'status' => 'success',
 			'private' => $privateKey,
 			'public' => $publicKey
 		]);

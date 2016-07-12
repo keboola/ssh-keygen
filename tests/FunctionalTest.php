@@ -43,6 +43,9 @@ class FunctionalTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(is_array($data));
 
+        $this->assertArrayHasKey('status', $data);
+        $this->assertEquals('success', $data['status']);
+
         $this->assertArrayHasKey('private', $data);
         $this->assertNotEmpty($data['private']);
 
@@ -64,6 +67,9 @@ class FunctionalTest extends \PHPUnit_Framework_TestCase
         $data = json_decode($lastOutput, true);
 
         $this->assertTrue(is_array($data));
+
+        $this->assertArrayHasKey('status', $data);
+        $this->assertEquals('success', $data['status']);
 
         $this->assertArrayHasKey('private', $data);
         $this->assertNotEmpty($data['private']);
