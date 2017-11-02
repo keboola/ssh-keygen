@@ -50,7 +50,7 @@ try {
 		$privateKeyFile = $keyPath . '/ssh.key';
 		$publicKeyFile = $privateKeyFile . '.pub';
 
-		$process = new Process("ssh-keygen -b 2048 -t rsa -f " . $privateKeyFile . " -N '' -q");
+		$process = new Process("ssh-keygen -b 4096 -t rsa -f " . $privateKeyFile . " -N '' -q");
 
 		$process->mustRun();
 
