@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-php composer.phar install --no-interaction
+composer install -n;
 
 ./vendor/bin/phpunit
