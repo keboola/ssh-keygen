@@ -1,17 +1,17 @@
-sudo: false
+sudo: required
 
-language: php
-php:
-  - '7.0'
-  - nightly
-
-matrix:
-  allow_failures:
-    - php: nightly
+services:
+  - docker
 
 before_install:
-  - composer self-update
+  - docker-compose -v
 
-install: composer install -n
+script:
+  - docker-compose run app
 
-script: php vendor/bin/phpunit
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: ./deploy.sh
+  on:
+    tags: true

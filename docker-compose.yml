@@ -1,8 +1,11 @@
-app:
-  build: .
-  volumes:
-    - .:/code
-  working_dir: /code
-  entrypoint: "./phpunit.sh"
-  tty: true
-  stdin_open: true
+version: "2"
+services:
+  app:
+    build: .
+    image: keboola/ssh-keygen-v2
+    volumes:
+        - ./:/code
+    working_dir: /code
+    command: "./phpunit.sh"
+    tty: true
+    stdin_open: true
