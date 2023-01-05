@@ -9,7 +9,6 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\NullHandler;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Yaml\Yaml;
 use Keboola\SSH\Keygen\Exception\UserException;
 
 define('APP_NAME', 'ssh-keygen');
@@ -29,11 +28,11 @@ try {
 	if (!isset($arguments["data"])) {
 		throw new UserException(UserException::ERR_DATA_PARAM);
 	}
-	if (!file_exists($arguments["data"] . "/config.yml")) {
+	if (!file_exists($arguments["data"] . "/config.json")) {
 		throw new UserException(UserException::ERR_MISSING_CONFIG);
 	}
 
-	$config = Yaml::parse(file_get_contents($arguments["data"] . "/config.yml"));
+	$config = json_decode(file_get_contents($arguments["data"] . "/config.json"), true);
 
 	$action = isset($config['action']) ? $config['action'] : $action;
 
